@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio 01</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Alex — Web Dev</h1>
+      <p>Ich lerne Webentwicklung und baue Projekte.</p>
+      <button id="toggle-theme" type="button">Night</button>
+    </header>
+
+    <main>
+      <section>
+        <h2>Projekte</h2>
+        <p>Hier sind ein paar Dinge, die ich baue:</p>
+
+        <label for="project-search">Projekte suchen:</label>
+        <input
+          id="project-search"
+          type="text"
+          placeholder="z. B. Portfolio, Metadaten…"
+        />
+
+        <p id="search-count"></p>
+
+        <ul id="project-list" class="project-list"></ul>
+      </section>
+
+      <section>
+        <h2>Kontakt</h2>
+        <p>Email: <a href="mailto:kacinari@gmx.de">kacinari@gmx.de</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <small>© 2026 Alex</small>
+    </footer>
+
+    <!-- WICHTIG: Script gehört hier hin -->
+    <script src="script.js"></script>
+  </body>
+</html>
