@@ -1,5 +1,9 @@
 console.log("script loaded");
 
+const yearEl = document.querySelector("#year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+
 // Theme
 const button = document.querySelector("#toggle-theme");
 const savedTheme = localStorage.getItem("alex-theme");
