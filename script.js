@@ -32,18 +32,21 @@ const projects = [
     desc: "Produktionsjahr, Cast, Titel, Herkunft, Sprachen prüfen",
     url: "https://github.com/",
     cta: "Demo",
+    tags: ["JS", "Data", "QA"],
   },
   {
     title: "Projekt 2",
     desc: "Kurzbeschreibung folgt.",
     url: "https://github.com/",
     cta: "GitHub",
+    tags: ["JS"],
   },
 {
   title: "Portfolio Seite",
   desc: "Meine erste responsive Seite mit Night Mode.",
   url: "https://silentcity86.github.io/portfolio-01/",
   cta: "Live",
+  tags: ["HTML", "CSS", "JS"],
 },
 
 ];
@@ -75,6 +78,22 @@ function renderProjects(items) {
 
     const p = document.createElement("p");
     p.textContent = project.desc;
+
+    // Tags anzeigen (wenn vorhanden)
+if (project.tags && project.tags.length > 0) {
+  const tagsWrap = document.createElement("div");
+  tagsWrap.className = "tag-list";
+
+  for (const tag of project.tags) {
+    const span = document.createElement("span");
+    span.className = "tag";
+    span.textContent = tag;
+    tagsWrap.appendChild(span);
+  }
+
+  li.appendChild(tagsWrap);
+}
+
 
     li.appendChild(h3);
     li.appendChild(p);

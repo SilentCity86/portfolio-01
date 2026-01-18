@@ -199,3 +199,27 @@ body.night #project-search {
 body.night #search-count {
   color: #c7cbd6;
 }
+
+/* Tags */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 14px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #eef1f6;
+  color: #111;
+}
+
+/* Night Mode Tags */
+body.night .tag {
+  background: #2a3140;
+  color: #f2f2f2;
+}
