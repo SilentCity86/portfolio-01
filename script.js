@@ -35,12 +35,13 @@ const projects = [
     url: "https://github.com/",
     cta: "GitHub",
   },
-  {
-    title: "Portfolio Seite",
-    desc: "Meine erste responsive Seite mit Night Mode.",
-    url: "https://github.com/",
-    cta: "Code",
-  },
+{
+  title: "Portfolio Seite",
+  desc: "Meine erste responsive Seite mit Night Mode.",
+  url: "https://silentcity86.github.io/portfolio-01/",
+  cta: "Live",
+},
+
 ];
 
 const list = document.querySelector("#project-list");
