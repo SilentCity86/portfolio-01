@@ -223,3 +223,43 @@ body.night .tag {
   background: #2a3140;
   color: #f2f2f2;
 }
+
+/* Filter-Leiste */
+.tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+
+.tag-filters button {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #d7dbe3;
+  background: #fff;
+  color: #111;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tag-filters button:hover {
+  opacity: 0.95;
+}
+
+.tag-filters button.is-active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+body.night .tag-filters button {
+  background: #161a22;
+  color: #f2f2f2;
+  border-color: #2a3140;
+}
+
+body.night .tag-filters button.is-active {
+  background: #f2f2f2;
+  color: #111;
+  border-color: #f2f2f2;
+}

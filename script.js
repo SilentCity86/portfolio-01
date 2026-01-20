@@ -111,22 +111,67 @@ if (project.tags && project.tags.length > 0) {
   }
 }
 
-// Beim Laden: alle anzeigen
-renderProjects(projects);
+const filtersEl = document.querySelector("#tag-filters");
+let activeTag = "Alle";
 
-// Beim Tippen: filtern
-if (searchInput) {
-  searchInput.addEventListener("input", () => {
-    const q = searchInput.value.toLowerCase().trim();
+function buildTagFilters() {
+  if (!filtersEl) return;
 
-    const filtered = projects.filter((p) =>
-      (p.title + " " + p.desc + " " + (p.cta ?? ""))
-        .toLowerCase()
-        .includes(q)
-    );
+  const tagSet = new Set();
+  for (const p of projects) {
+    for (const t of (p.tags ?? [])) tagSet.add(t);
+  }
 
-    renderProjects(filtered);
+  const tags = ["Alle", ...Array.from(tagSet).sort()];
+  filtersEl.replaceChildren();
+
+  for (const tag of tags) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = tag;
+
+    if (tag === activeTag) b.classList.add("is-active");
+
+    b.addEventListener("click", () => {
+      activeTag = tag;
+      buildTagFilters(); // aktive Optik aktualisieren
+      applyFilters();    // neu rendern
+    });
+
+    filtersEl.appendChild(b);
+  }
+}
+
+function applyFilters() {
+  const q = (searchInput ? searchInput.value : "").toLowerCase().trim();
+
+  const filtered = projects.filter((p) => {
+    const hay = (p.title + " " + p.desc + " " + (p.cta ?? "")).toLowerCase();
+    const matchesText = hay.includes(q);
+    const matchesTag = activeTag === "Alle" || (p.tags ?? []).includes(activeTag);
+    return matchesText && matchesTag;
   });
-} else {
-  console.log("project-search input not found");
+
+  renderProjects(filtered);
+}
+
+// Initial
+buildTagFilters();
+applyFilters();
+
+// Suche tippen = neu filtern
+if (searchInput) {
+  searchInput.addEventListener("input", applyFilters);
+}
+
+// ESC im Suchfeld: Suche leeren + Filter zurück auf "Alle"
+if (searchInput) {
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      searchInput.value = "";
+      activeTag = "Alle";
+      buildTagFilters();
+      applyFilters();
+    }
+  });
 }
