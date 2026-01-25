@@ -284,6 +284,28 @@ loadQa();
 
 const exportBtn = document.querySelector("#qa-export");
 
+const resetBtn = document.querySelector("#qa-reset");
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", () => {
+    // Felder leeren
+    for (const id of qaFields) {
+      const el = document.querySelector("#" + id);
+      if (el) el.value = "";
+    }
+
+    // localStorage löschen
+    localStorage.removeItem(QA_KEY);
+
+    // Ergebnisbox leeren
+    if (qaResult) qaResult.innerHTML = "";
+
+    // Fokus zurück ins erste Feld
+    document.querySelector("#meta-title")?.focus();
+  });
+}
+
+
 function makeReport() {
   const title = document.querySelector("#meta-title")?.value.trim() ?? "";
   const year = document.querySelector("#meta-year")?.value.trim() ?? "";
