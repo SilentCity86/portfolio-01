@@ -263,3 +263,25 @@ body.night .tag-filters button.is-active {
   color: #111;
   border-color: #f2f2f2;
 }
+
+/* QA: Buttons nebeneinander */
+#qa-form {
+  display: grid;
+  gap: 10px;
+}
+
+#qa-form button {
+  margin-top: 6px;
+}
+
+#qa-form button#qa-run,
+#qa-form button#qa-export {
+  width: fit-content;
+}
+
+/* Optional: kleine Button-Zeile */
+#qa-form .qa-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
