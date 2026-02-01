@@ -1,32 +1,53 @@
+/* =========================================================
+   0) Global: Box-Sizing
+   - Standardmäßig zählt padding/border NICHT zur Breite/Höhe.
+   - Mit border-box ist es einfacher: width beinhaltet padding/border.
+========================================================= */
 * { box-sizing: border-box; }
 
+/* =========================================================
+   1) Grund-Layout der Seite (Body)
+   - Font + Grundfarben + Hintergrund
+========================================================= */
 body {
-  margin: 0;
+  margin: 0; /* Browser-Default-Rand entfernen */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  color: #111;
-  background: #f6f7f9;
+  color: #111;        /* Standard-Textfarbe (heller Modus) */
+  background: #f6f7f9; /* leichter, neutraler Hintergrund */
 }
 
+/* =========================================================
+   2) Seite zentrieren und begrenzen
+   - header/main/footer sind max 900px breit und mittig
+========================================================= */
 header,
 main,
 footer {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 24px;
+  margin: 0 auto;   /* horizontal zentrieren */
+  padding: 24px;    /* Innenabstand */
 }
 
+/* =========================================================
+   3) Header als "Card" mit Schatten (schwebender Effekt)
+========================================================= */
 header {
   margin-top: 24px;
   background: #fff;
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+  /* flex: Elemente untereinander + etwas Abstand */
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* =========================================================
+   4) Sections ebenfalls als Cards
+========================================================= */
 section {
   background: #fff;
   border-radius: 16px;
@@ -35,6 +56,9 @@ section {
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
+/* =========================================================
+   5) Überschriften
+========================================================= */
 h1 {
   margin: 0 0 8px;
   font-size: 44px;
@@ -46,12 +70,20 @@ h2 {
   font-size: 28px;
 }
 
+/* =========================================================
+   6) Links (Standard)
+   - color: inherit => Link hat die Textfarbe des Umfelds
+========================================================= */
 a {
   color: inherit;
   text-decoration: underline;
 }
 
-/* Theme Button */
+/* =========================================================
+   7) Theme Button (Night/Day)
+   - align-self: flex-start => Button nicht volle Breite
+   - transition => weicher Hover-Effekt
+========================================================= */
 button {
   padding: 10px 14px;
   border-radius: 12px;
@@ -70,9 +102,13 @@ button:hover {
   opacity: 0.98;
 }
 
-/* Projekte Grid */
+/* =========================================================
+   8) Projektliste als Grid
+   - Mobile: 1 Spalte
+   - Ab 700px: 3 Spalten
+========================================================= */
 .project-list {
-  list-style: none;
+  list-style: none;      /* bullets entfernen */
   padding: 0;
   margin: 16px 0 0;
   display: grid;
@@ -86,7 +122,11 @@ button:hover {
   }
 }
 
-/* Projekt Card */
+/* =========================================================
+   9) Projektkarte (Card in der Liste)
+   - flex: Inhalte untereinander
+   - hover => "schwebt" leicht
+========================================================= */
 .project-card {
   background: #fff;
   border-radius: 16px;
@@ -102,19 +142,25 @@ button:hover {
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
+/* Title in Card */
 .project-card h3 {
   margin: 0 0 6px;
   font-size: 20px;
   color: #111;
 }
 
+/* Text in Card
+   - flex: 1 => nimmt Platz ein, damit der Button unten bleibt
+*/
 .project-card p {
   margin: 0 0 10px;
   color: #444;
   flex: 1;
 }
 
-/* Link als Button */
+/* =========================================================
+   10) Link in der Card als Button (CTA)
+========================================================= */
 .project-card a {
   display: inline-block;
   padding: 8px 12px;
@@ -132,7 +178,9 @@ button:hover {
   opacity: 0.98;
 }
 
-/* Suchfeld NUR für Projekte */
+/* =========================================================
+   11) Suchfeld (nur Projekte)
+========================================================= */
 label[for="project-search"] {
   display: block;
   margin-top: 12px;
@@ -155,7 +203,10 @@ label[for="project-search"] {
   border-color: #111;
 }
 
-/* Night Mode */
+/* =========================================================
+   12) Night Mode (Dark Theme)
+   - wirkt, wenn JS die Klasse "night" auf <body> setzt
+========================================================= */
 body.night {
   background: #0f1115;
   color: #f2f2f2;
@@ -191,6 +242,9 @@ body.night #project-search {
   border-color: #2a3140;
 }
 
+/* =========================================================
+   13) Trefferanzeige
+========================================================= */
 #search-count {
   margin: 8px 0 0;
   color: #555;
@@ -200,7 +254,9 @@ body.night #search-count {
   color: #c7cbd6;
 }
 
-/* Tags */
+/* =========================================================
+   14) Tags (Pills unter den Projektkarten)
+========================================================= */
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -218,13 +274,14 @@ body.night #search-count {
   color: #111;
 }
 
-/* Night Mode Tags */
 body.night .tag {
   background: #2a3140;
   color: #f2f2f2;
 }
 
-/* Filter-Leiste */
+/* =========================================================
+   15) Filter-Leiste (Buttons aus Tags)
+========================================================= */
 .tag-filters {
   display: flex;
   flex-wrap: wrap;
@@ -264,7 +321,10 @@ body.night .tag-filters button.is-active {
   border-color: #f2f2f2;
 }
 
-/* QA: Buttons nebeneinander */
+/* =========================================================
+   16) QA Form Layout
+   - grid + gap => alle Felder schön untereinander mit Abstand
+========================================================= */
 #qa-form {
   display: grid;
   gap: 10px;
@@ -274,14 +334,28 @@ body.night .tag-filters button.is-active {
   margin-top: 6px;
 }
 
+/* Buttons sollen nicht über volle Breite gehen */
 #qa-form button#qa-run,
-#qa-form button#qa-export {
+#qa-form button#qa-export,
+#qa-form button#qa-reset {
   width: fit-content;
 }
 
-/* Optional: kleine Button-Zeile */
+/* Button-Zeile: nebeneinander, bricht bei Bedarf um */
 #qa-form .qa-actions {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
+
+/* Footer luftiger + lesbar */
+footer {
+  padding-bottom: 40px;
+  color: #555;
+}
+
+body.night footer {
+  color: #c7cbd6;
+}
+
+.qa-result { margin-top: 12px; }

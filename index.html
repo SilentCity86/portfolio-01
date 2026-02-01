@@ -1,24 +1,35 @@
 <!doctype html>
 <html lang="de">
   <head>
+    <!-- Zeichenkodierung -->
     <meta charset="UTF-8" />
+
+    <!-- Mobile-Optimierung: sorgt dafür, dass die Seite auf Handy gut skaliert -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Portfolio 01</title>
+
+    <!-- Verknüpft dein CSS (Design) -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+    <!-- Kopfbereich (oben) -->
     <header>
       <h1>Alex — Web Dev</h1>
       <p>Ich lerne Webentwicklung und baue Projekte.</p>
+
+      <!-- Button: schaltet Night/Day per JavaScript -->
       <button id="toggle-theme" type="button">Night</button>
     </header>
 
     <main>
+      <!-- Projekte -->
       <section>
         <h2>Projekte</h2>
         <p>Hier sind ein paar Dinge, die ich baue:</p>
 
+        <!-- Suche: filtert Projekte live -->
         <label for="project-search">Projekte suchen:</label>
         <input
           id="project-search"
@@ -26,56 +37,70 @@
           placeholder="z. B. Portfolio, Metadaten…"
         />
 
+        <!-- Anzeige: wie viele Projekte gerade sichtbar sind -->
         <p id="search-count"></p>
 
+        <!-- Tag-Filter: Buttons werden per JS automatisch erzeugt -->
         <div id="tag-filters" class="tag-filters"></div>
 
+        <!-- Projektliste: wird komplett per JS gerendert -->
         <ul id="project-list" class="project-list"></ul>
       </section>
 
+      <!-- Kontakt -->
       <section>
         <h2>Kontakt</h2>
         <p>Email: <a href="mailto:kacinari@gmx.de">kacinari@gmx.de</a></p>
       </section>
 
+      <!-- Metadata QA Checker (Mini-Web-App) -->
       <section id="qa-checker">
-  <h2>Metadata QA Checker</h2>
-  <p>Mini-Tool: Pflichtfelder prüfen und dir sagen, was noch fehlt.</p>
+        <h2>Metadata QA Checker</h2>
+        <p>Mini-Tool: Pflichtfelder prüfen und dir sagen, was noch fehlt.</p>
 
-  <form id="qa-form">
-    <label for="meta-title">Titel *</label>
-    <input id="meta-title" type="text" placeholder="z. B. The Matrix" />
+        <!-- Formular: wird von JS abgefangen (kein echter Submit/Reload) -->
+        <form id="qa-form">
+          <label for="meta-title">Titel *</label>
+          <input id="meta-title" type="text" placeholder="z. B. The Matrix" />
 
-    <label for="meta-year">Produktionsjahr *</label>
-    <input id="meta-year" type="text" inputmode="numeric" placeholder="z. B. 1999" />
+          <label for="meta-year">Produktionsjahr *</label>
+          <input
+            id="meta-year"
+            type="text"
+            inputmode="numeric"
+            placeholder="z. B. 1999"
+          />
 
-    <label for="meta-lang">Sprachen *</label>
-    <input id="meta-lang" type="text" placeholder="z. B. DE, EN" />
+          <label for="meta-lang">Sprachen *</label>
+          <input id="meta-lang" type="text" placeholder="z. B. DE, EN" />
 
-    <label for="meta-cast">Cast *</label>
-    <input id="meta-cast" type="text" placeholder="z. B. Keanu Reeves, Carrie-Anne Moss" />
+          <label for="meta-cast">Cast *</label>
+          <input
+            id="meta-cast"
+            type="text"
+            placeholder="z. B. Keanu Reeves, Carrie-Anne Moss"
+          />
 
- <div class="qa-actions">
-  <button id="qa-run" type="submit">Prüfen</button>
-  <button id="qa-export" type="button">Export (kopieren)</button>
-  <button id="qa-reset" type="button">Reset</button>
-</div>
+          <!-- Buttons: Prüfen / Export / Reset -->
+          <div class="qa-actions">
+            <button id="qa-run" type="submit">Prüfen</button>
+            <button id="qa-export" type="button">Export (kopieren)</button>
+            <button id="qa-reset" type="button">Reset</button>
+          </div>
+        </form>
 
-
-
-  </form>
-
-  <div id="qa-result" aria-live="polite" style="margin-top:12px;"></div>
-</section>
-
-
+        <!-- Ergebnisbox: JS schreibt hier OK/Fehlt rein -->
+        <div id="qa-result" aria-live="polite" class="qa-result"></div>
+      </section>
     </main>
 
     <footer>
+      <!-- Jahr wird per JS automatisch gesetzt -->
       <small>© <span id="year"></span> Alex</small>
     </footer>
 
-    <!-- WICHTIG: Script gehört hier hin -->
+    <!-- Script am Ende: damit alle HTML-Elemente schon geladen sind,
+         wenn JS mit querySelector(...) danach sucht -->
     <script src="script.js"></script>
   </body>
 </html>
